@@ -1,0 +1,774 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+<title>Green Gold Farmland – Grow Wealth. Grow Green.</title>  
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>  
+<style>  
+  :root {  
+    --green: #1C5C28;  
+    --green-light: #2A7A38;  
+    --gold: #C89A2D;  
+    --gold-light: #E8B84B;  
+    --cream: #F7F3EC;  
+    --dark: #111A12;  
+    --text: #2D3A2E;  
+    --muted: #6B7A6C;  
+    --white: #ffffff;  
+  }  
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }  
+  html { scroll-behavior: smooth; }  
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }  
+  
+  /* ─── NAV ─── */  
+  nav {  
+    position: fixed; top: 0; width: 100%; z-index: 1000;  
+    background: rgba(28,92,40,0.96); backdrop-filter: blur(8px);  
+    padding: 0 5%;  
+    display: flex; align-items: center; justify-content: space-between; height: 68px;  
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);  
+  }  
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }  
+  .nav-logo-circle {  
+    width: 44px; height: 44px; border-radius: 50%;  
+    background: var(--white); display: flex; align-items: center; justify-content: center;  
+    border: 2px solid var(--gold);  
+  }  
+  .nav-logo-circle svg { width: 28px; height: 28px; }  
+  .nav-brand { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; line-height: 1.15; }  
+  .nav-brand span { color: var(--gold-light); display: block; }  
+  .nav-links { display: flex; gap: 28px; list-style: none; }  
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }  
+  .nav-links a:hover { color: var(--gold-light); }  
+  .nav-cta {  
+    background: var(--gold); color: var(--dark); padding: 8px 20px;  
+    border-radius: 24px; font-weight: 600; font-size: 0.85rem; text-decoration: none;  
+    transition: background 0.2s, transform 0.2s;  
+  }  
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }  
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }  
+  .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; }  
+  
+  /* ─── HERO ─── */  
+  .hero {  
+    min-height: 100vh;  
+    background:  
+      linear-gradient(to bottom, rgba(17,26,18,0.55) 0%, rgba(17,26,18,0.3) 50%, rgba(17,26,18,0.7) 100%),  
+      url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80') center/cover no-repeat;  
+    display: flex; align-items: center; justify-content: center; text-align: center;  
+    padding: 120px 5% 80px;  
+    position: relative;  
+  }  
+  .hero-content { max-width: 800px; }  
+  .hero-badge {  
+    display: inline-block; background: rgba(200,154,45,0.2); border: 1px solid var(--gold);  
+    color: var(--gold-light); padding: 6px 18px; border-radius: 20px;  
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;  
+  }  
+  .hero h1 {  
+    font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 4.2rem);  
+    color: var(--white); font-weight: 700; line-height: 1.15; margin-bottom: 20px;  
+  }  
+  .hero h1 em { color: var(--gold-light); font-style: normal; }  
+  .hero p {  
+    color: rgba(255,255,255,0.85); font-size: clamp(1rem, 2vw, 1.2rem); max-width: 580px;  
+    margin: 0 auto 40px; line-height: 1.7; font-weight: 300;  
+  }  
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }  
+  .btn-primary {  
+    background: var(--gold); color: var(--dark); padding: 14px 34px;  
+    border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.95rem;  
+    transition: all 0.25s; display: inline-block;  
+  }  
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,154,45,0.4); }  
+  .btn-outline {  
+    background: transparent; color: var(--white); padding: 14px 34px;  
+    border-radius: 30px; font-weight: 600; text-decoration: none; font-size: 0.95rem;  
+    border: 2px solid rgba(255,255,255,0.6); transition: all 0.25s; display: inline-block;  
+  }  
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }  
+  .hero-stats {  
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);  
+    display: flex; gap: 50px; flex-wrap: wrap; justify-content: center;  
+  }  
+  .hero-stat { text-align: center; }  
+  .hero-stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold-light); font-weight: 700; }  
+  .hero-stat span { font-size: 0.8rem; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; text-transform: uppercase; }  
+  
+  /* ─── SECTIONS ─── */  
+  section { padding: 90px 5%; }  
+  .section-label {  
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;  
+    color: var(--gold); margin-bottom: 10px; display: block;  
+  }  
+  .section-title {  
+    font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem);  
+    font-weight: 700; color: var(--dark); line-height: 1.2; margin-bottom: 16px;  
+  }  
+  .section-subtitle { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }  
+  
+  /* ─── ABOUT ─── */  
+  .about { background: var(--cream); }  
+  .about-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }  
+  .about-img { position: relative; }  
+  .about-img img { width: 100%; height: 480px; object-fit: cover; border-radius: 16px; }  
+  .about-badge {  
+    position: absolute; bottom: -24px; right: -24px;  
+    background: var(--green); color: var(--white); padding: 24px;  
+    border-radius: 12px; text-align: center; min-width: 140px;  
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);  
+  }  
+  .about-badge strong { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold-light); display: block; }  
+  .about-badge span { font-size: 0.78rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.8); }  
+  .about-text { padding-right: 20px; }  
+  .about-text .section-subtitle { margin-bottom: 28px; }  
+  .about-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }  
+  .about-points li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text); line-height: 1.6; }  
+  .about-points li::before {  
+    content: '✓'; background: var(--green); color: white;  
+    width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center;  
+    justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px;  
+  }  
+  
+  /* ─── SERVICES ─── */  
+  .services { background: var(--white); }  
+  .services-inner { max-width: 1200px; margin: auto; }  
+  .services-head { margin-bottom: 56px; }  
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }  
+  .service-card {  
+    background: var(--cream); border-radius: 16px; padding: 36px 28px;  
+    border: 1px solid rgba(28,92,40,0.08); transition: all 0.3s;  
+    position: relative; overflow: hidden;  
+  }  
+  .service-card::before {  
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;  
+    background: linear-gradient(90deg, var(--green), var(--gold)); opacity: 0; transition: opacity 0.3s;  
+  }  
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(28,92,40,0.12); }  
+  .service-card:hover::before { opacity: 1; }  
+  .service-icon {  
+    width: 56px; height: 56px; background: var(--green); border-radius: 14px;  
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.6rem;  
+  }  
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark); margin-bottom: 10px; }  
+  .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }  
+  
+  /* ─── WHY CHOOSE US ─── */  
+  .why { background: var(--green); padding: 90px 5%; }  
+  .why-inner { max-width: 1200px; margin: auto; }  
+  .why .section-label { color: var(--gold-light); }  
+  .why .section-title { color: var(--white); }  
+  .why .section-subtitle { color: rgba(255,255,255,0.75); }  
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }  
+  .why-item { display: flex; gap: 18px; align-items: flex-start; }  
+  .why-num {  
+    font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;  
+    color: rgba(200,154,45,0.35); flex-shrink: 0; line-height: 1; min-width: 38px;  
+  }  
+  .why-item h4 { color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 6px; }  
+  .why-item p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.6; }  
+  
+  /* ─── FARMS ─── */  
+  .farms { background: var(--cream); }  
+  .farms-inner { max-width: 1200px; margin: auto; }  
+  .farms-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }  
+  .farms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }  
+  .farm-card { border-radius: 16px; overflow: hidden; background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.06); transition: transform 0.3s; }  
+  .farm-card:hover { transform: translateY(-5px); }  
+  .farm-img { position: relative; height: 220px; overflow: hidden; }  
+  .farm-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }  
+  .farm-card:hover .farm-img img { transform: scale(1.05); }  
+  .farm-tag {  
+    position: absolute; top: 14px; left: 14px;  
+    background: var(--gold); color: var(--dark); padding: 4px 12px;  
+    border-radius: 20px; font-size: 0.75rem; font-weight: 700;  
+  }  
+  .farm-body { padding: 24px; }  
+  .farm-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--dark); margin-bottom: 6px; }  
+  .farm-meta { display: flex; gap: 16px; margin-bottom: 14px; }  
+  .farm-meta span { font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }  
+  .farm-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }  
+  .farm-link { color: var(--green); font-weight: 600; font-size: 0.88rem; text-decoration: none; }  
+  .farm-link:hover { color: var(--gold); }  
+  
+  /* ─── SUSTAINABILITY ─── */  
+  .sustain { background: var(--white); }  
+  .sustain-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }  
+  .sustain-img img { width: 100%; height: 460px; object-fit: cover; border-radius: 16px; }  
+  .sustain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }  
+  .sustain-item { display: flex; gap: 14px; }  
+  .sustain-icon { font-size: 1.5rem; flex-shrink: 0; }  
+  .sustain-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }  
+  .sustain-item p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }  
+  
+  /* ─── TESTIMONIALS ─── */  
+  .testimonials { background: var(--cream); }  
+  .testimonials-inner { max-width: 1200px; margin: auto; }  
+  .testimonials-head { text-align: center; margin-bottom: 52px; }  
+  .testimonials-head .section-subtitle { margin: 0 auto; }  
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }  
+  .testi-card {  
+    background: var(--white); border-radius: 16px; padding: 32px 28px;  
+    border: 1px solid rgba(28,92,40,0.08); position: relative;  
+  }  
+  .testi-stars { color: var(--gold); margin-bottom: 14px; font-size: 1rem; }  
+  .testi-card p { font-size: 0.92rem; color: var(--text); line-height: 1.75; margin-bottom: 24px; font-style: italic; }  
+  .testi-author { display: flex; align-items: center; gap: 14px; }  
+  .testi-avatar {  
+    width: 44px; height: 44px; border-radius: 50%;  
+    background: linear-gradient(135deg, var(--green), var(--gold)); display: flex; align-items: center;  
+    justify-content: center; color: white; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;  
+  }  
+  .testi-name { font-weight: 600; font-size: 0.92rem; color: var(--dark); }  
+  .testi-loc { font-size: 0.78rem; color: var(--muted); }  
+  
+  /* ─── CONTACT ─── */  
+  .contact { background: var(--dark); padding: 90px 5%; }  
+  .contact-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }  
+  .contact .section-label { color: var(--gold-light); }  
+  .contact .section-title { color: var(--white); }  
+  .contact .section-subtitle { color: rgba(255,255,255,0.65); margin-bottom: 40px; }  
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }  
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }  
+  .contact-item-icon {  
+    width: 44px; height: 44px; background: rgba(200,154,45,0.15); border-radius: 10px;  
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;  
+  }  
+  .contact-item h4 { font-size: 0.8rem; font-weight: 600; color: var(--gold-light); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }  
+  .contact-item p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.5; }  
+  .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px; }  
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }  
+  .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }  
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; text-transform: uppercase; }  
+  .form-group input, .form-group select, .form-group textarea {  
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);  
+    border-radius: 8px; padding: 12px 14px; color: white; font-size: 0.9rem;  
+    font-family: 'Inter', sans-serif; transition: border-color 0.2s; width: 100%;  
+  }  
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }  
+  .form-group input:focus, .form-group select, .form-group textarea:focus { outline: none; border-color: var(--gold); }  
+  .form-group select option { background: var(--dark); }  
+  .form-group textarea { height: 110px; resize: none; }  
+  .form-submit {  
+    width: 100%; background: var(--gold); color: var(--dark); border: none;  
+    padding: 14px; border-radius: 30px; font-weight: 700; font-size: 0.95rem;  
+    cursor: pointer; transition: all 0.25s; font-family: 'Inter', sans-serif; margin-top: 8px;  
+  }  
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }  
+  
+  /* ─── FOOTER ─── */  
+  footer { background: #0D1610; padding: 60px 5% 28px; }  
+  .footer-inner { max-width: 1200px; margin: auto; }  
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }  
+  .footer-brand-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; text-decoration: none; }  
+  .footer-logo-circle {  
+    width: 48px; height: 48px; border-radius: 50%; background: var(--green);  
+    border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center;  
+  }  
+  .footer-logo-circle svg { width: 28px; height: 28px; }  
+  .footer-brand-name { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; line-height: 1.2; }  
+  .footer-brand-name span { color: var(--gold-light); display: block; }  
+  .footer-about { font-size: 0.87rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 20px; }  
+  .footer-socials { display: flex; gap: 10px; }  
+  .footer-social {  
+    width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.08);  
+    display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6);  
+    text-decoration: none; font-size: 0.8rem; transition: all 0.2s;  
+  }  
+  .footer-social:hover { background: var(--gold); color: var(--dark); }  
+  .footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 600; margin-bottom: 18px; letter-spacing: 0.04em; }  
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }  
+  .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }  
+  .footer-col ul li a:hover { color: var(--gold-light); }  
+  .footer-bottom {  
+    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;  
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;  
+  }  
+  .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }  
+  .footer-bottom-links { display: flex; gap: 20px; }  
+  .footer-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.35); text-decoration: none; }  
+  .footer-bottom-links a:hover { color: var(--gold-light); }  
+  
+  /* ─── RESPONSIVE ─── */  
+  @media (max-width: 900px) {  
+    .nav-links, .nav-cta { display: none; }  
+    .hamburger { display: flex; }  
+    .about-inner, .sustain-inner, .contact-inner { grid-template-columns: 1fr; }  
+    .about-text { padding-right: 0; }  
+    .about-badge { right: 0; }  
+    .services-grid, .why-grid, .farms-grid, .testi-grid { grid-template-columns: 1fr 1fr; }  
+    .footer-top { grid-template-columns: 1fr 1fr; }  
+    .form-row { grid-template-columns: 1fr; }  
+  }  
+  @media (max-width: 600px) {  
+    section { padding: 60px 5%; }  
+    .services-grid, .why-grid, .farms-grid, .testi-grid { grid-template-columns: 1fr; }  
+    .sustain-grid { grid-template-columns: 1fr; }  
+    .footer-top { grid-template-columns: 1fr; }  
+    .hero-stats { gap: 28px; }  
+    .farms-head { flex-direction: column; align-items: flex-start; }  
+  }  
+</style>  
+</head>  
+<body>  
+  
+<!-- NAV -->  
+<nav>  
+  <a href="#" class="nav-logo">  
+    <div class="nav-logo-circle">  
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">  
+        <circle cx="30" cy="30" r="28" stroke="#1C5C28" stroke-width="3"/>  
+        <circle cx="30" cy="18" r="7" fill="#C89A2D"/>  
+        <path d="M8 38 Q20 28 30 32 Q40 28 52 38 Q40 50 30 46 Q20 50 8 38Z" fill="#1C5C28"/>  
+        <circle cx="22" cy="32" r="5" fill="#2A7A38"/>  
+        <circle cx="38" cy="32" r="4" fill="#2A7A38"/>  
+      </svg>  
+    </div>  
+    <div class="nav-brand">Green Gold<span>Farmland</span></div>  
+  </a>  
+  <ul class="nav-links">  
+    <li><a href="#about">About</a></li>  
+    <li><a href="#services">Services</a></li>  
+    <li><a href="#farms">Our Farms</a></li>  
+    <li><a href="#sustainability">Sustainability</a></li>  
+    <li><a href="#testimonials">Testimonials</a></li>  
+  </ul>  
+  <a href="#contact" class="nav-cta">Get in Touch</a>  
+  <div class="hamburger">  
+    <span></span><span></span><span></span>  
+  </div>  
+</nav>  
+  
+<!-- HERO -->  
+<section class="hero">  
+  <div class="hero-content">  
+    <div class="hero-badge">🌱 Bangalore's Premier Farmland Investment</div>  
+    <h1>Grow <em>Wealth.</em><br/>Grow <em>Green.</em></h1>  
+    <p>Own fertile, managed farmland near Bangalore. We handle everything — you harvest the returns and the legacy.</p>  
+    <div class="hero-btns">  
+      <a href="#farms" class="btn-primary">Explore Our Farms</a>  
+      <a href="#contact" class="btn-outline">Book a Site Visit</a>  
+    </div>  
+  </div>  
+  <div class="hero-stats">  
+    <div class="hero-stat"><strong>500+</strong><span>Acres Managed</span></div>  
+    <div class="hero-stat"><strong>1200+</strong><span>Happy Investors</span></div>  
+    <div class="hero-stat"><strong>15+</strong><span>Years Returns</span></div>  
+    <div class="hero-stat"><strong>100%</strong><span>Legal & Clear</span></div>  
+  </div>  
+</section>  
+  
+<!-- ABOUT -->  
+<section class="about" id="about">  
+  <div class="about-inner">  
+    <div class="about-img">  
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80" alt="Green Gold Farm"/>  
+      <div class="about-badge">  
+        <strong>10+</strong>  
+        <span>Years of<br/>Excellence</span>  
+      </div>  
+    </div>  
+    <div class="about-text">  
+      <span class="section-label">Who We Are</span>  
+      <h2 class="section-title">Rooted in Land.<br/>Built for Growth.</h2>  
+      <p class="section-subtitle">Green Gold Farmland is a Bangalore-based agro-realty company dedicated to transforming unused fertile land into thriving, profitable ecosystems — for investors, for nature, for future generations.</p>  
+      <ul class="about-points" style="margin-top: 28px;">  
+        <li>Fully managed farmplots — zero effort required from you</li>  
+        <li>Legally verified land in high-growth corridors near Bangalore</li>  
+        <li>Tax-free agricultural income under Indian law</li>  
+        <li>Triple returns: land appreciation + timber income + crop revenue</li>  
+        <li>Transparent partnership with real-time farm updates</li>  
+        <li>Weekend access to your personal green retreat</li>  
+      </ul>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- SERVICES -->  
+<section class="services" id="services">  
+  <div class="services-inner">  
+    <div class="services-head">  
+      <span class="section-label">What We Offer</span>  
+      <h2 class="section-title">Everything Your Farm Needs</h2>  
+      <p class="section-subtitle">From plot selection to harvest, our end-to-end services ensure your farmland works hard — even while you don't.</p>  
+    </div>  
+    <div class="services-grid">  
+      <div class="service-card">  
+        <div class="service-icon">🌾</div>  
+        <h3>Farmland Development</h3>  
+        <p>Site clearing, bunding, road access, fencing, and infrastructure setup — we prepare your plot for maximum productivity.</p>  
+      </div>  
+      <div class="service-card">  
+        <div class="service-icon">🌿</div>  
+        <h3>Crop Production</h3>  
+        <p>Seasonal crops including vegetables, fruits, and cash crops cultivated using modern, organic-aligned practices.</p>  
+      </div>  
+      <div class="service-card">  
+        <div class="service-icon">🌳</div>  
+        <h3>Timber Plantation</h3>  
+        <p>High-value timber trees like sandalwood, teak, and silver oak — long-term wealth that grows with time.</p>  
+      </div>  
+      <div class="service-card">  
+        <div class="service-icon">💧</div>  
+        <h3>Irrigation & Water Mgmt</h3>  
+        <p>Drip irrigation, borewells, and rainwater harvesting designed for efficiency and soil health preservation.</p>  
+      </div>  
+      <div class="service-card">  
+        <div class="service-icon">📊</div>  
+        <h3>Farm Management</h3>  
+        <p>Dedicated agronomy teams, pest control, soil testing, and regular reporting keep your investment on track.</p>  
+      </div>  
+      <div class="service-card">  
+        <div class="service-icon">🏡</div>  
+        <h3>Lifestyle Farmstay</h3>  
+        <p>Weekend cottages, nature walks, and harvest experiences — your land is your green getaway, not just an asset.</p>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- WHY CHOOSE US -->  
+<section class="why" id="why">  
+  <div class="why-inner">  
+    <span class="section-label">Why Green Gold</span>  
+    <h2 class="section-title" style="max-width: 520px;">A Smarter Way to Own Land</h2>  
+    <p class="section-subtitle">We built Green Gold Farmland because we believed farm investment should be simple, honest, and truly rewarding.</p>  
+    <div class="why-grid">  
+      <div class="why-item">  
+        <div class="why-num">01</div>  
+        <div>  
+          <h4>Legally Clear Land</h4>  
+          <p>Every plot undergoes rigorous title verification, encumbrance checks, and RERA-aligned documentation before listing.</p>  
+        </div>  
+      </div>  
+      <div class="why-item">  
+        <div class="why-num">02</div>  
+        <div>  
+          <h4>Hassle-Free Management</h4>  
+          <p>Our expert agronomy team handles all farm operations. You receive income without setting foot on the field.</p>  
+        </div>  
+      </div>  
+      <div class="why-item">  
+        <div class="why-num">03</div>  
+        <div>  
+          <h4>Eco-Responsible Farming</h4>  
+          <p>We use organic inputs, drip irrigation, and intercropping to maximize yields while protecting biodiversity.</p>  
+        </div>  
+      </div>  
+      <div class="why-item">  
+        <div class="why-num">04</div>  
+        <div>  
+          <h4>Tax-Free Agricultural Income</h4>  
+          <p>Farm earnings are exempt from income tax under Indian law — making this one of the most efficient investments available.</p>  
+        </div>  
+      </div>  
+      <div class="why-item">  
+        <div class="why-num">05</div>  
+        <div>  
+          <h4>Full Transparency</h4>  
+          <p>Regular farm reports, site visit access, and an investor dashboard keep you fully informed at every stage.</p>  
+        </div>  
+      </div>  
+      <div class="why-item">  
+        <div class="why-num">06</div>  
+        <div>  
+          <h4>Long-Term Value</h4>  
+          <p>Land in high-growth corridors near Bangalore appreciates consistently, compounding your investment over time.</p>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- FARMS -->  
+<section class="farms" id="farms">  
+  <div class="farms-inner">  
+    <div class="farms-head">  
+      <div>  
+        <span class="section-label">Our Projects</span>  
+        <h2 class="section-title">Featured Farmlands</h2>  
+      </div>  
+      <a href="#contact" class="btn-primary" style="white-space:nowrap;">Schedule a Visit →</a>  
+    </div>  
+    <div class="farms-grid">  
+      <div class="farm-card">  
+        <div class="farm-img">  
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Sunrise Estate"/>  
+          <div class="farm-tag">Available</div>  
+        </div>  
+        <div class="farm-body">  
+          <h3>Sunrise Estate</h3>  
+          <div class="farm-meta">  
+            <span>📍 Kanakapura Road</span>  
+            <span>🌿 80 Acres</span>  
+          </div>  
+          <p>Lush sandalwood and teak plantation with intercropping of turmeric and vegetables. Premium gated community with road access.</p>  
+          <a href="#contact" class="farm-link">Learn More →</a>  
+        </div>  
+      </div>  
+      <div class="farm-card">  
+        <div class="farm-img">  
+          <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80" alt="Golden Fields"/>  
+          <div class="farm-tag">Selling Fast</div>  
+        </div>  
+        <div class="farm-body">  
+          <h3>Golden Fields</h3>  
+          <div class="farm-meta">  
+            <span>📍 Hosur Highway</span>  
+            <span>🌿 60 Acres</span>  
+          </div>  
+          <p>High-yield organic farm plots with drip irrigation, banana, and coconut plantation. Close to proposed industrial corridor.</p>  
+          <a href="#contact" class="farm-link">Learn More →</a>  
+        </div>  
+      </div>  
+      <div class="farm-card">  
+        <div class="farm-img">  
+          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80" alt="Valley Green"/>  
+          <div class="farm-tag">New Launch</div>  
+        </div>  
+        <div class="farm-body">  
+          <h3>Valley Green</h3>  
+          <div class="farm-meta">  
+            <span>📍 Tumkur Road</span>  
+            <span>🌿 120 Acres</span>  
+          </div>  
+          <p>Our largest project yet — featuring mixed plantation, farm cottages, and a central amenity zone for investor retreats.</p>  
+          <a href="#contact" class="farm-link">Learn More →</a>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- SUSTAINABILITY -->  
+<section class="sustain" id="sustainability">  
+  <div class="sustain-inner">  
+    <div class="sustain-img">  
+      <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80" alt="Sustainable Farming"/>  
+    </div>  
+    <div>  
+      <span class="section-label">Our Commitment</span>  
+      <h2 class="section-title">Farming That Gives Back to the Earth</h2>  
+      <p class="section-subtitle">Every decision we make at Green Gold Farmland is guided by a simple belief: profitable farming and ecological responsibility are not opposites — they are partners.</p>  
+      <div class="sustain-grid">  
+        <div class="sustain-item">  
+          <div class="sustain-icon">💧</div>  
+          <div>  
+            <h4>Water Conservation</h4>  
+            <p>Drip systems and rainwater harvesting reduce water use by up to 60% per acre.</p>  
+          </div>  
+        </div>  
+        <div class="sustain-item">  
+          <div class="sustain-icon">🌱</div>  
+          <div>  
+            <h4>Soil Health</h4>  
+            <p>Organic inputs, vermicompost, and cover cropping keep our soil alive and productive for decades.</p>  
+          </div>  
+        </div>  
+        <div class="sustain-item">  
+          <div class="sustain-icon">🌍</div>  
+          <div>  
+            <h4>Carbon Sequestration</h4>  
+            <p>Timber plantations actively absorb CO₂, turning every investor plot into a carbon sink.</p>  
+          </div>  
+        </div>  
+        <div class="sustain-item">  
+          <div class="sustain-icon">🦋</div>  
+          <div>  
+            <h4>Biodiversity Protection</h4>  
+            <p>Native tree buffers and habitat corridors protect local wildlife on every project site.</p>  
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- TESTIMONIALS -->  
+<section class="testimonials" id="testimonials">  
+  <div class="testimonials-inner">  
+    <div class="testimonials-head">  
+      <span class="section-label">What Investors Say</span>  
+      <h2 class="section-title">Trusted by 1,200+ Landowners</h2>  
+      <p class="section-subtitle">From IT professionals to retired families, Green Gold Farmland investors share a common experience: confidence, returns, and peace of mind.</p>  
+    </div>  
+    <div class="testi-grid">  
+      <div class="testi-card">  
+        <div class="testi-stars">★★★★★</div>  
+        <p>"I was skeptical about farm investment at first. After one site visit to Green Gold's project on Kanakapura Road, I purchased 2 acres. Two years in, I receive quarterly crop income and land value has already appreciated 18%. Completely hassle-free."</p>  
+        <div class="testi-author">  
+          <div class="testi-avatar">RK</div>  
+          <div>  
+            <div class="testi-name">Rajesh Kumar</div>  
+            <div class="testi-loc">IT Professional, Whitefield</div>  
+          </div>  
+        </div>  
+      </div>  
+      <div class="testi-card">  
+        <div class="testi-stars">★★★★★</div>  
+        <p>"The transparency here is unmatched. Monthly farm reports, WhatsApp updates, open-door site visits — I feel like a real farmer without doing any farming. My retirement plan now includes Green Gold land."</p>  
+        <div class="testi-author">  
+          <div class="testi-avatar">PS</div>  
+          <div>  
+            <div class="testi-name">Priya Suresh</div>  
+            <div class="testi-loc">Doctor, Jayanagar</div>  
+          </div>  
+        </div>  
+      </div>  
+      <div class="testi-card">  
+        <div class="testi-stars">★★★★★</div>  
+        <p>"My family bought 1 acre in Valley Green as a weekend retreat. The cottage access and farm experience for my kids has been priceless. And the sandalwood investment makes it a proper financial decision too."</p>  
+        <div class="testi-author">  
+          <div class="testi-avatar">AM</div>  
+          <div>  
+            <div class="testi-name">Anil Murthy</div>  
+            <div class="testi-loc">Business Owner, Indiranagar</div>  
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- CONTACT -->  
+<section class="contact" id="contact">  
+  <div class="contact-inner">  
+    <div>  
+      <span class="section-label">Get In Touch</span>  
+      <h2 class="section-title">Start Your Green<br/>Gold Journey</h2>  
+      <p class="section-subtitle">Book a free consultation or a site visit. Our team will walk you through every detail — no pressure, no jargon.</p>  
+      <div class="contact-info">  
+        <div class="contact-item">  
+          <div class="contact-item-icon">📍</div>  
+          <div>  
+            <h4>Office</h4>  
+            <p>3rd Floor, Brigade Road,<br/>Ashok Nagar, Bengaluru – 560025</p>  
+          </div>  
+        </div>  
+        <div class="contact-item">  
+          <div class="contact-item-icon">📞</div>  
+          <div>  
+            <h4>Phone</h4>  
+            <p>+91  9980068251 </p>  
+          </div>  
+        </div>  
+        <div class="contact-item">  
+          <div class="contact-item-icon">✉️</div>  
+          <div>  
+            <h4>Email</h4>  
+            <p>info@greengoldfarmland.com</p>  
+          </div>  
+        </div>  
+        <div class="contact-item">  
+          <div class="contact-item-icon">🕐</div>  
+          <div>  
+            <h4>Hours</h4>  
+            <p>Mon–Sat: 9:00 AM – 6:00 PM</p>  
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+    <div class="contact-form">  
+      <h3 style="font-family: 'Playfair Display', serif; color: white; font-size: 1.4rem; margin-bottom: 24px;">Request a Callback</h3>  
+      <div class="form-row">  
+        <div class="form-group">  
+          <label>First Name</label>  
+          <input type="text" placeholder="Rajesh"/>  
+        </div>  
+        <div class="form-group">  
+          <label>Last Name</label>  
+          <input type="text" placeholder="Kumar"/>  
+        </div>  
+      </div>  
+      <div class="form-group">  
+        <label>Phone Number</label>  
+        <input type="tel" placeholder="+91 98765 43210"/>  
+      </div>  
+      <div class="form-group">  
+        <label>Email</label>  
+        <input type="email" placeholder="you@email.com"/>  
+      </div>  
+      <div class="form-group">  
+        <label>Interested In</label>  
+        <select>  
+          <option>Sunrise Estate – Kanakapura Road</option>  
+          <option>Golden Fields – Hosur Highway</option>  
+          <option>Valley Green – Tumkur Road</option>  
+          <option>General Enquiry</option>  
+        </select>  
+      </div>  
+      <div class="form-group">  
+        <label>Message</label>  
+        <textarea placeholder="Tell us about your investment goals or questions…"></textarea>  
+      </div>  
+      <button class="form-submit">Send Message →</button>  
+    </div>  
+  </div>  
+</section>  
+  
+<!-- FOOTER -->  
+<footer>  
+  <div class="footer-inner">  
+    <div class="footer-top">  
+      <div>  
+        <a href="#" class="footer-brand-logo">  
+          <div class="footer-logo-circle">  
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">  
+              <circle cx="30" cy="30" r="28" stroke="#C89A2D" stroke-width="2"/>  
+              <circle cx="30" cy="18" r="7" fill="#C89A2D"/>  
+              <path d="M8 38 Q20 28 30 32 Q40 28 52 38 Q40 50 30 46 Q20 50 8 38Z" fill="#2A7A38"/>  
+            </svg>  
+          </div>  
+          <div class="footer-brand-name">Green Gold<span>Farmland</span></div>  
+        </a>  
+        <p class="footer-about">A Bangalore-based agro-realty company helping investors own, grow, and benefit from premium managed farmland across Karnataka.</p>  
+        <div class="footer-socials">  
+          <a href="#" class="footer-social">f</a>  
+          <a href="#" class="footer-social">in</a>  
+          <a href="#" class="footer-social">▶</a>  
+          <a href="#" class="footer-social">ig</a>  
+        </div>  
+      </div>  
+      <div class="footer-col">  
+        <h4>Company</h4>  
+        <ul>  
+          <li><a href="#about">About Us</a></li>  
+          <li><a href="#services">Services</a></li>  
+          <li><a href="#sustainability">Sustainability</a></li>  
+          <li><a href="#">Careers</a></li>  
+          <li><a href="#">Blog</a></li>  
+        </ul>  
+      </div>  
+      <div class="footer-col">  
+        <h4>Projects</h4>  
+        <ul>  
+          <li><a href="#">Sunrise Estate</a></li>  
+          <li><a href="#">Golden Fields</a></li>  
+          <li><a href="#">Valley Green</a></li>  
+          <li><a href="#">Upcoming Projects</a></li>  
+        </ul>  
+      </div>  
+      <div class="footer-col">  
+        <h4>Resources</h4>  
+        <ul>  
+          <li><a href="#">FAQ</a></li>  
+          <li><a href="#">Investor Guide</a></li>  
+          <li><a href="#">Download Brochure</a></li>  
+          <li><a href="#contact">Contact Us</a></li>  
+        </ul>  
+      </div>  
+    </div>  
+    <div class="footer-bottom">  
+      <p>© 2026 Green Gold Farmland. All Rights Reserved.</p>  
+      <div class="footer-bottom-links">  
+        <a href="#">Privacy Policy</a>  
+        <a href="#">Terms of Service</a>  
+        <a href="#">Disclaimer</a>  
+      </div>  
+    </div>  
+  </div>  
+</footer>  
+  
+</body>  
+</html>  
